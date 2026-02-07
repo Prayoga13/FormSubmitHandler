@@ -3,120 +3,337 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solusi Digital Terbaik | Landing Page Interaktif</title>
+    <title>Form Pendaftaran | Upload CV</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📄</text></svg>">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
+    <!-- Header Navigation -->
+    <header class="header">
         <div class="container">
-            <a href="#" class="logo">Digital<span>Solution</span></a>
-            <div class="nav-links">
-                <a href="#home">Beranda</a>
-                <a href="#features">Fitur</a>
-                <a href="#testimonials">Testimoni</a>
-                <a href="#contact">Kontak</a>
-            </div>
-            <button class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Form<span class="logo-highlight">CV</span></span>
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">Beranda</a>
+                    <a href="#form-section" class="nav-link">Form</a>
+                    <a href="#instructions" class="nav-link">Instruksi</a>
+                    <a href="#contact" class="nav-link">Kontak</a>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Tingkatkan Bisnis Anda dengan <span class="highlight">Solusi Digital</span></h1>
-                <p class="hero-subtitle">Platform all-in-one untuk mengembangkan bisnis Anda ke level berikutnya. Bergabunglah dengan 500+ perusahaan yang telah menggunakan layanan kami.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Mulai Sekarang</a>
-                    <a href="#features" class="btn btn-secondary">Pelajari Fitur</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <h3>500+</h3>
-                        <p>Klien Puas</p>
+                <h1 class="hero-title">Formulir Pendaftaran <span class="highlight">Online</span></h1>
+                <p class="hero-subtitle">
+                    Lengkapi data diri Anda dengan formulir digital kami. Data yang Anda kirim akan secara otomatis tersimpan ke Google Spreadsheet dan CV Anda akan diunggah dengan aman.
+                </p>
+                <div class="hero-features">
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Data Terjamin Aman</span>
                     </div>
-                    <div class="stat">
-                        <h3>99%</h3>
-                        <p>Kepuasan Klien</p>
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Proses Cepat</span>
                     </div>
-                    <div class="stat">
-                        <h3>24/7</h3>
-                        <p>Support</p>
+                    <div class="feature-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Konfirmasi Real-time</span>
                     </div>
                 </div>
+                <a href="#form-section" class="btn btn-primary btn-hero">
+                    <i class="fas fa-pencil-alt"></i> Isi Formulir Sekarang
+                </a>
             </div>
             <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Digital Solution Illustration">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Form Illustration">
+                    <div class="floating-badge">
+                        <i class="fas fa-file-upload"></i>
+                        <span>Upload CV</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
+    <!-- Main Form Section -->
+    <section id="form-section" class="form-section">
         <div class="container">
-            <h2 class="section-title">Mengapa Memilih Kami?</h2>
-            <p class="section-subtitle">Kami menyediakan solusi lengkap untuk kebutuhan digital bisnis Anda</p>
+            <div class="section-header">
+                <h2 class="section-title">Formulir Pendaftaran</h2>
+                <p class="section-subtitle">Isi data dengan lengkap dan benar sesuai instruksi yang diberikan</p>
+                <div class="form-progress">
+                    <div class="progress-step active">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Data Diri</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Upload CV</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-number">3</div>
+                        <div class="step-text">Konfirmasi</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Container -->
+            <div class="form-container">
+                <div id="formMessage" class="form-message"></div>
+                
+                <form id="registrationForm" enctype="multipart/form-data">
+                    <!-- Step 1: Personal Data -->
+                    <div class="form-step active" id="step1">
+                        <h3 class="form-step-title">
+                            <i class="fas fa-user-circle"></i> Data Pribadi
+                        </h3>
+                        
+                        <div class="form-group">
+                            <label for="nama">
+                                Nama Lengkap <span class="required">*</span>
+                            </label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input 
+                                    type="text" 
+                                    id="nama" 
+                                    name="nama" 
+                                    placeholder="Masukkan nama lengkap Anda"
+                                    required
+                                >
+                            </div>
+                            <div class="error-message" id="namaError"></div>
+                            <div class="input-hint">Isi sesuai dengan nama lengkap di KTP</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kelas">
+                                Kelas <span class="required">*</span>
+                            </label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                                <select id="kelas" name="kelas" required>
+                                    <option value="" disabled selected>Pilih kelas Anda</option>
+                                    <option value="10">Kelas 10</option>
+                                    <option value="11">Kelas 11</option>
+                                    <option value="12">Kelas 12</option>
+                                    <option value="Mahasiswa">Mahasiswa</option>
+                                    <option value="Umum">Umum</option>
+                                </select>
+                            </div>
+                            <div class="error-message" id="kelasError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="npt">
+                                NPT (Nomor Peserta Tes) <span class="required">*</span>
+                            </label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-id-card"></i>
+                                <input 
+                                    type="text" 
+                                    id="npt" 
+                                    name="npt" 
+                                    placeholder="Contoh: NPT2024001"
+                                    pattern="[A-Z0-9]{3,20}"
+                                    title="Format: huruf dan angka (3-20 karakter)"
+                                    required
+                                >
+                            </div>
+                            <div class="error-message" id="nptError"></div>
+                            <div class="input-hint">Format: huruf kapital dan angka tanpa spasi</div>
+                        </div>
+
+                        <div class="form-step-actions">
+                            <button type="button" class="btn btn-next" id="nextToStep2">
+                                Lanjut <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: CV Upload -->
+                    <div class="form-step" id="step2">
+                        <h3 class="form-step-title">
+                            <i class="fas fa-file-upload"></i> Upload Berkas CV
+                        </h3>
+                        
+                        <div class="upload-container">
+                            <div class="upload-area" id="dropArea">
+                                <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                <h4>Drop file CV di sini atau klik untuk upload</h4>
+                                <p class="upload-info">
+                                    Format yang didukung: PDF, DOC, DOCX (Maks: 5MB)
+                                </p>
+                                <input 
+                                    type="file" 
+                                    id="cvFile" 
+                                    name="cv" 
+                                    accept=".pdf,.doc,.docx"
+                                    style="display: none;"
+                                >
+                                <button type="button" class="btn btn-outline" id="browseBtn">
+                                    <i class="fas fa-folder-open"></i> Pilih File
+                                </button>
+                            </div>
+                            
+                            <div class="file-preview" id="filePreview">
+                                <div class="preview-header">
+                                    <h4>File Terpilih:</h4>
+                                </div>
+                                <div class="preview-content" id="previewContent">
+                                    <p class="no-file">Belum ada file yang dipilih</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-step-actions">
+                            <button type="button" class="btn btn-back" id="backToStep1">
+                                <i class="fas fa-arrow-left"></i> Kembali
+                            </button>
+                            <button type="button" class="btn btn-next" id="nextToStep3">
+                                Lanjut <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Confirmation -->
+                    <div class="form-step" id="step3">
+                        <h3 class="form-step-title">
+                            <i class="fas fa-check-circle"></i> Konfirmasi Data
+                        </h3>
+                        
+                        <div class="confirmation-container">
+                            <div class="confirmation-card">
+                                <div class="confirmation-header">
+                                    <i class="fas fa-clipboard-check"></i>
+                                    <h4>Ringkasan Data Anda</h4>
+                                </div>
+                                <div class="confirmation-body">
+                                    <div class="data-row">
+                                        <span class="data-label">Nama Lengkap:</span>
+                                        <span class="data-value" id="confirmNama">-</span>
+                                    </div>
+                                    <div class="data-row">
+                                        <span class="data-label">Kelas:</span>
+                                        <span class="data-value" id="confirmKelas">-</span>
+                                    </div>
+                                    <div class="data-row">
+                                        <span class="data-label">NPT:</span>
+                                        <span class="data-value" id="confirmNpt">-</span>
+                                    </div>
+                                    <div class="data-row">
+                                        <span class="data-label">File CV:</span>
+                                        <span class="data-value" id="confirmCv">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="terms-checkbox">
+                                <input type="checkbox" id="agreeTerms" required>
+                                <label for="agreeTerms">
+                                    Saya menyatakan bahwa data yang diisi adalah benar dan saya setuju dengan 
+                                    <a href="#" class="terms-link">syarat dan ketentuan</a> yang berlaku.
+                                </label>
+                            </div>
+                            <div class="error-message" id="termsError"></div>
+                        </div>
+
+                        <div class="form-step-actions">
+                            <button type="button" class="btn btn-back" id="backToStep2">
+                                <i class="fas fa-arrow-left"></i> Kembali
+                            </button>
+                            <button type="submit" class="btn btn-submit" id="submitForm">
+                                <span id="submitText">
+                                    <i class="fas fa-paper-plane"></i> Kirim Formulir
+                                </span>
+                                <div class="spinner" id="submitSpinner"></div>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructions Section -->
+    <section id="instructions" class="instructions">
+        <div class="container">
+            <h2 class="section-title">Instruksi Pengisian</h2>
+            <p class="section-subtitle">Ikuti panduan berikut untuk mengisi formulir dengan benar</p>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-rocket"></i>
+            <div class="instructions-grid">
+                <div class="instruction-card">
+                    <div class="instruction-icon">
+                        <div class="icon-circle">1</div>
                     </div>
-                    <h3>Performa Tinggi</h3>
-                    <p>Optimasi maksimal untuk kecepatan loading dan pengalaman pengguna yang mulus.</p>
+                    <h3>Persiapkan Data</h3>
+                    <p>Siapkan dokumen asli untuk referensi pengisian data. Pastikan NPT sudah valid dan tersedia.</p>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                <div class="instruction-card">
+                    <div class="instruction-icon">
+                        <div class="icon-circle">2</div>
                     </div>
-                    <h3>Keamanan Terbaik</h3>
-                    <p>Proteksi data dengan enkripsi tingkat tinggi dan backup rutin.</p>
+                    <h3>Isi Formulir</h3>
+                    <p>Isi semua field yang bertanda * (wajib). Pastikan data sesuai dengan dokumen resmi.</p>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                <div class="instruction-card">
+                    <div class="instruction-icon">
+                        <div class="icon-circle">3</div>
                     </div>
-                    <h3>Responsif</h3>
-                    <p>Tampilan optimal di semua perangkat: desktop, tablet, dan smartphone.</p>
+                    <h3>Upload CV</h3>
+                    <p>Upload file CV dalam format PDF atau DOC/DOCX. Maksimal ukuran file 5MB.</p>
                 </div>
                 
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
+                <div class="instruction-card">
+                    <div class="instruction-icon">
+                        <div class="icon-circle">4</div>
                     </div>
-                    <h3>Analytics</h3>
-                    <p>Dashboard analitik lengkap untuk memantau performa bisnis Anda.</p>
+                    <h3>Review & Kirim</h3>
+                    <p>Periksa kembali data yang sudah diisi, centang persetujuan, lalu klik tombol kirim.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-wrapper">
                 <div class="contact-info">
-                    <h2 class="section-title">Hubungi Kami</h2>
-                    <p class="section-subtitle">Isi formulir di samping dan kami akan menghubungi Anda dalam waktu 1x24 jam.</p>
+                    <h2 class="section-title">Butuh Bantuan?</h2>
+                    <p class="section-subtitle">Tim support kami siap membantu Anda</p>
                     
                     <div class="contact-details">
                         <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
                             <div>
-                                <h4>Alamat Kantor</h4>
-                                <p>Jl. Digital No. 123, Jakarta Selatan</p>
+                                <h4>Email Support</h4>
+                                <p>support@formcv.com</p>
                             </div>
                         </div>
                         
                         <div class="contact-item">
-                            <i class="fas fa-phone"></i>
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
                             <div>
                                 <h4>Telepon</h4>
                                 <p>(021) 1234-5678</p>
@@ -124,54 +341,25 @@
                         </div>
                         
                         <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
                             <div>
-                                <h4>Email</h4>
-                                <p>info@digitalsolution.com</p>
+                                <h4>Jam Operasional</h4>
+                                <p>Senin - Jumat: 08:00 - 17:00 WIB</p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <div id="form-message"></div>
-                    <form id="mainForm">
-                        <div class="form-group">
-                            <label for="name">Nama Lengkap *</label>
-                            <input type="text" id="name" name="Nama" required>
-                            <div class="error-message"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="Email" required>
-                            <div class="error-message"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Nomor Telepon</label>
-                            <input type="tel" id="phone" name="Telepon">
-                            <div class="error-message"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Pesan *</label>
-                            <textarea id="message" name="Pesan" rows="4" required></textarea>
-                            <div class="error-message"></div>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-block">
-                            <span id="submit-text">Kirim Pesan</span>
-                            <div id="loading-spinner" class="spinner"></div>
-                        </button>
-                    </form>
+                    <h3>Pertanyaan Cepat</h3>
+                    <div class="quick-form">
+                        <input type="text" placeholder="Nama Anda">
+                        <input type="email" placeholder="Email Anda">
+                        <textarea placeholder="Pertanyaan Anda"></textarea>
+                        <button class="btn btn-primary">Kirim Pertanyaan</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -181,32 +369,37 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>DigitalSolution</h3>
-                    <p>Menyediakan solusi digital terbaik untuk perkembangan bisnis Anda di era digital.</p>
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Form<span class="logo-highlight">CV</span></span>
+                    </div>
+                    <p>Sistem formulir online terintegrasi dengan Google Spreadsheet untuk pengelolaan data yang efisien.</p>
                 </div>
                 
-                <div class="footer-section">
-                    <h3>Link Cepat</h3>
+                <div class="footer-links">
+                    <h4>Link Cepat</h4>
                     <ul>
                         <li><a href="#home">Beranda</a></li>
-                        <li><a href="#features">Fitur</a></li>
+                        <li><a href="#form-section">Formulir</a></li>
+                        <li><a href="#instructions">Instruksi</a></li>
                         <li><a href="#contact">Kontak</a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-section">
-                    <h3>Layanan</h3>
+                <div class="footer-links">
+                    <h4>Dokumen</h4>
                     <ul>
-                        <li><a href="#">Web Development</a></li>
-                        <li><a href="#">Digital Marketing</a></li>
-                        <li><a href="#">SEO Optimization</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Panduan Upload</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 DigitalSolution. Dibuat dengan ❤️ untuk klien terbaik.</p>
+                <p>&copy; 2024 FormCV. Semua hak dilindungi. | Dibuat dengan <i class="fas fa-heart"></i> untuk kemudahan administrasi</p>
             </div>
         </div>
     </footer>
