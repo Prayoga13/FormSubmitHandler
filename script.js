@@ -1,7 +1,8 @@
 // Konfigurasi Aplikasi
-const APP_CONFIG = {
+const APP_CONFIG = {    
     // Ganti dengan URL Web App Google Apps Script Anda
-    GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbykpn7XhlWq45G_p_oj3uz8U36N75n_Y_1n0AYW2F8pW5dolzzrV7ylBlUz8k_hhAQg/exec',
+    GOOGLE_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbziPXLpmtFAxhqi3P0sX4RLHJQ22DLgaT053YNStyrsmJpgu3nS0iEva-QDquFE6fOPzA/exec',
+    
     
     // Validasi file
     MAX_FILE_SIZE: 5 * 1024 * 1024, // 5MB
@@ -554,3 +555,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
 });
+
